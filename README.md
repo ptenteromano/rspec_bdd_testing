@@ -1,15 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails 5.1 app created without native testing
 
-Things you may want to cover:
+RSpec testing using BDD and TDD methodology
 
-* Ruby version
+* Ruby 2.3.4
 
-* System dependencies
+* Local environment using RubyMine
 
-* Configuration
+* Managed by RVM with app-specific gemset
 
 * Database creation
 
