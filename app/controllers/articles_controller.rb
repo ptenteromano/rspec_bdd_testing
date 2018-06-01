@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   def index
+    @articles = Article.all
   end
 
   def new
@@ -13,7 +14,7 @@ class ArticlesController < ApplicationController
       redirect_to articles_path
     else
       flash.now[:danger] = "Article has not been created"
-      render 'new'
+      render 'articles/new'
     end
   end
 

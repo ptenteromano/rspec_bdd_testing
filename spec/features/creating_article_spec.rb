@@ -10,7 +10,6 @@ require 'rails_helper'
 # article has been created
 # articles path
 
-
 RSpec.feature "creating articles" do
   scenario "user creates a new article" do
     visit "/"     # sign for root
