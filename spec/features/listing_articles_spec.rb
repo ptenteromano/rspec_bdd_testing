@@ -8,12 +8,12 @@ RSpec.feature "listing articles" do
 
   before do
     # no need to log in
-    john = User.create(email: "john@example.com", password: 'password')
-    @article1 = Article.create(title: "First article", body: "first body", user: john)
-    @article2 = Article.create(title: "Second article", body: "first body", user: john)
+    @john = User.create(email: "john@example.com", password: 'password')
+    @article1 = Article.create(title: "First article", body: "first body", user: @john)
+    @article2 = Article.create(title: "Second article", body: "first body", user: @john)
   end
 
-  scenario "display index with two articles" do
+  scenario "Display index with two articles" do
     visit "/"
 
     expect(page).to have_content(@article1.title)
@@ -24,7 +24,7 @@ RSpec.feature "listing articles" do
     expect(page).to have_link(@article2.title)
   end
 
-  scenario "a user has no articles" do
+  scenario "A user has no articles" do
     Article.delete_all
 
     visit "/"
@@ -39,6 +39,32 @@ RSpec.feature "listing articles" do
     within("h1#no-articles") do
       expect(page).to have_content("No articles created")
     end
+
+  end
+
+  scenario "With articles created and user not signed in" do
+    visit "/"
+
+    expect(page).to have_content(@article1.title)
+    expect(page).to have_content(@article1.body)
+    expect(page).to have_content(@article2.title)
+    expect(page).to have_content(@article2.body)
+    expect(page).to have_link(@article1.title)
+    expect(page).to have_link(@article2.title)
+    expect(page).to_not have_link("New Article")
+  end
+
+  scenario "With articles created and user signed in" do
+    login_as @john
+    visit "/"
+
+    expect(page).to have_content(@article1.title)
+    expect(page).to have_content(@article1.body)
+    expect(page).to have_content(@article2.title)
+    expect(page).to have_content(@article2.body)
+    expect(page).to have_link(@article1.title)
+    expect(page).to have_link(@article2.title)
+    expect(page).to have_link("New Article")
   end
 
 end

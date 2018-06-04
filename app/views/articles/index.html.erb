@@ -1,4 +1,7 @@
-<%= link_to "New Article", new_article_path, class: "btn btn-default btn-lg", id: "new-article-btn" %>
+
+<% if user_signed_in? %>
+  <%= link_to "New Article", new_article_path, class: "btn btn-default btn-lg", id: "new-article-btn" %>
+<% end %>
 
 <% if @articles.empty? %>
   <h1 id="no-articles">No articles created</h1>
@@ -16,9 +19,7 @@
       </div>
 
       <div class="author">
-        <% if article.user != nil %>
-          <small>Created by: <%= article.user.email %></small>
-        <% end %>
+        <small>Created by: <%= article.user.email %></small>
       </div>
 
     </div>
