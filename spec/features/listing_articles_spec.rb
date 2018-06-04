@@ -7,8 +7,10 @@ require 'rails_helper'
 RSpec.feature "listing articles" do
 
   before do
-    @article1 = Article.create(title: "First article", body: "first body")
-    @article2 = Article.create(title: "Second article", body: "first body")
+    # no need to log in
+    john = User.create(email: "john@example.com", password: 'password')
+    @article1 = Article.create(title: "First article", body: "first body", user: john)
+    @article2 = Article.create(title: "Second article", body: "first body", user: john)
   end
 
   scenario "display index with two articles" do
