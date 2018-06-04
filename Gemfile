@@ -45,6 +45,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'simplecov', require: false
   gem 'capybara', '2.7.1'               # ADDED
 end
 
