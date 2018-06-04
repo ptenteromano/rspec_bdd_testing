@@ -16,7 +16,9 @@
       </div>
 
       <div class="author">
-        <small>Created by: <%= article.user.email %></small>
+        <% if article.user != nil %>
+          <small>Created by: <%= article.user.email %></small>
+        <% end %>
       </div>
 
     </div>
