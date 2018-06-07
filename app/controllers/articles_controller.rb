@@ -24,6 +24,8 @@ class ArticlesController < ApplicationController
 
   def show
     # @article = Article.find(params[:id])
+    @comment = @article.comments.build
+    @comments = @article.comments
   end
 
   # edit action submits to update action
@@ -37,7 +39,8 @@ class ArticlesController < ApplicationController
 
   def update
     unless @article.user == current_user
-      flash[:danger] = 'You can only edit or delete your own article'
+      flash[:alert] = 'You can only edit or delete your own article.'
+      redirect_to root_path
     else
       if @article.update(article_params)
         flash[:success] = "Article has been updated"
