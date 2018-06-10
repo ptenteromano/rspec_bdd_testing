@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// Added top two lines and deleted 'rails-ujs'.. rails 5.1 wont have jquery by default
+// See Mac Notes on Rails
+//
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets

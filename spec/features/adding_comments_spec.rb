@@ -16,9 +16,10 @@ RSpec.feature 'Adding reviews to Articles' do
     fill_in "New Comment", with: "Amazing article!"
     click_button "Add Comment"
 
-    expect(page).to have_content "Comment has been created"
+    # expect(page).to have_content "Comment has been created"
     expect(page).to have_content "Amazing article!"
-    expect(current_path).to eq(article_path(@article.id))
+    # expect(current_path).to eq(article_path(@article.id))
+    # Commented out due to WebSocket taking over for ActionCable comments
   end
 
 end

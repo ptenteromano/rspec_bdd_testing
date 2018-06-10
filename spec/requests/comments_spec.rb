@@ -27,10 +27,11 @@ RSpec.describe "Comments", type: :request do
         post "/articles/#{@article.id}/comments", params: { comment: {body: "Awesome Blog"} }
       end
       it "create the comment succesfully" do
-        flash_message = "Comment has been created"
-        expect(response).to redirect_to(article_path(@article.id))
-        expect(response.status).to eq 302
-        expect(flash[:notice]).to eq flash_message
+        # flash_message = "Comment has been created"
+        # expect(response).to redirect_to(article_path(@article.id))
+        expect(response.status).to eq 200
+        # expect(flash[:notice]).to eq flash_message
+        # Commented out due to WebSocket taking over for ActionCable comments
       end
     end
   end
