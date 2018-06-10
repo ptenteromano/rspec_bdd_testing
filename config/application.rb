@@ -27,5 +27,8 @@ module RspecTesting
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # init action cable mount
+    config.action_cable.mount_path = '/cable'
   end
 end

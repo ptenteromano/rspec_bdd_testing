@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       #  grabs all comment routes
   end
 
+  mount ActionCable.server => '/cable'
+
 end
