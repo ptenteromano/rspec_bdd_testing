@@ -109,7 +109,7 @@ RSpec.describe "Articles", type: :request do
       end
       it "redirects to the home page" do
         expect(response.status).to eq 302
-        flash_message = "You can only edit your own article."
+        flash_message = "You can only edit or delete your own article."
         expect(flash[:alert]).to eq flash_message
       end
     end
@@ -124,7 +124,7 @@ RSpec.describe "Articles", type: :request do
       it "unsuccessful update" do
         put "/articles/#{@article.id}",
             params: { article: {title: "New Title", body: ""} }
-        expect(flash[:alert]).to eq("Article has not been updated")
+        expect(flash[:danger]).to eq("Article has not been updated")
         expect(response.status).to eq 200
       end
     end

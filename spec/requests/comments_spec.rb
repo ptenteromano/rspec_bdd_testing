@@ -15,7 +15,7 @@ RSpec.describe "Comments", type: :request do
       end
       it 'redirects user to the signin page' do
         flash_message = "Please sign in or sign up first"
-        expect(reponse).to redirect_to(new_user_session_path)
+        expect(response).to redirect_to(new_user_session_path)
         expect(response.status).to eq 302
         expect(flash[:alert]).to eq flash_message
       end
@@ -27,7 +27,7 @@ RSpec.describe "Comments", type: :request do
         post "/articles/#{@article.id}/comments", params: { comment: {body: "Awesome Blog"} }
       end
       it "create the comment succesfully" do
-        flash_message = "Comment created"
+        flash_message = "Comment has been created"
         expect(response).to redirect_to(article_path(@article.id))
         expect(response.status).to eq 302
         expect(flash[:notice]).to eq flash_message
